@@ -2,10 +2,15 @@
 
 ## Nombre del estudiante
 Alejandro Ortiz Cortes
+
 John Alejandro Pastor Sandoval
+
 Nicolas Quezada Mora
+
 Baruj Vladimir Escalante Ramirez
+
 Joan Sebastiam Puerto Roberto
+
 Nicolas Rodriguez Piraban
 
 ## Fecha de entrega
