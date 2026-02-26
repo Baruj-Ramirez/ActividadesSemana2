@@ -19,29 +19,42 @@ El presente taller tiene como objetivo comprender y aplicar los fundamentos de l
 
 Durante el desarrollo se implementaron diferentes entornos de visualización para analizar cómo funcionan las proyecciones ortogonales y en perspectiva, así como la simulación del comportamiento de una cámara virtual.
 
-Se trabajaron tres implementaciones principales:
+---
+
+## Implementaciones
+
+Se trabajaron cuatro implementaciones principales:
 
 * Python (cálculo matemático y visualización)
+* Unity (Motor gráfico con cámaras y escenas en 3D)
 * Three.js con React Three Fiber (entorno web interactivo)
 * Processing (simulación gráfica directa de cámaras)
 
 Cada implementación permitió observar desde distintos enfoques cómo las matrices de proyección transforman la percepción espacial.
 
----
-
-## Implementaciones
-
----
-
 ### 1. Python
 
----
+**Descripción**
+El notebook de python representa una figura 3D en coordenadas homogeneas, hace uso de matrices de proyección para dibujar sobre un  plano 2D en perspectiva u ortogonal,  compara visualmente la figura con sus proyecciones y dibuja en perspectiva a distintas distancias h.
+
+**Resultados visuales**
+Muestra de todo el código con los resultados
+![GIF del todo el código Python](media/python.gif)
+Resultados concretos de la figura en 3D con sus proyecciones enn un plano 2D, así como la proyección en perspectiva a distintas distancias.
+![Resultados del código Python](media/python.png)
 
 ### 2. Unity
 
----
+**Descripción**
+El proyecto de Unity es una escena en la que se ubican distintos cubos a una distancia y luego se compara con una camara ortografica y otra en perspectiva.
 
-### 3. Three.js + React Three Fiber
+**Resultados visuales**
+Ubicación de los objetos en la escena
+![Imagen de los objetos en la escena](media/Unity.png)
+Comparación de la vista de la proyección entre las dos camaras lado a lado, notese que la profundidad solo es claramente visible en la cámara en perspectiva.
+![Comparación de las dos cámaras con distintas proyecciones](media/unity.gif)
+
+### 3. Three.js
 
 **Herramientas utilizadas**
 
@@ -120,6 +133,69 @@ Cámara ortografica
 ---
 
 ## Código relevante
+
+### Funciones Python
+
+Funciones de conversion de y a homogeneas
+
+```python
+def a_homogeneas(puntos):
+    """Convierte puntos (3, N) a coordenadas homogeneas (4, N)."""
+    return np.vstack([puntos, np.ones((1, puntos.shape[1]))])
+
+def desde_homogeneas(puntos_h):
+    """Normaliza por w y regresa coordenadas euclidianas."""
+    return puntos_h[:-1] / puntos_h[-1]
+```
+
+Matrices de proyección
+
+```python
+    def matriz_ortogonal_xy():
+    """Proyeccion ortogonal sobre el plano XY."""
+    return np.array([
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 0, 0],
+        [0, 0, 0, 1],
+    ], dtype=float)
+
+def matriz_perspectiva(d=1.0):
+    """Proyeccion perspectiva con distancia focal d (d > 0)."""
+    if d <= 0:
+        raise ValueError('d debe ser mayor que 0')
+    return np.array([
+        [1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 1/d, 0],
+    ], dtype=float)
+```
+
+Proyección
+
+```python
+def proyectar(puntos, P):
+    """Aplica una matriz 4x4 a puntos 3D (3, N) y regresa (3, N)."""
+    puntos_h = a_homogeneas(puntos)
+    proy_h = P @ puntos_h
+    return desde_homogeneas(proy_h)
+```
+
+Función de dibujo en 2D
+
+```python
+def dibujar_2d(ax, proy, vertices_proy, titulo):
+    ax.scatter(proy[0], proy[1], s=20, alpha=0.75)
+    ax.scatter(vertices_proy[0], vertices_proy[1], s=50, color='crimson')
+    for i, j in aristas:
+        ax.plot([vertices_proy[0, i], vertices_proy[0, j]],
+                [vertices_proy[1, i], vertices_proy[1, j]], color='crimson', linewidth=1.6)
+    ax.set_title(titulo)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_aspect('equal', adjustable='box')    
+```
 
 ### Cambio de Cámara en React Three Fiber
 
