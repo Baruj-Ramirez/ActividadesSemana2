@@ -30,25 +30,42 @@ El proyecto presenta 2 situaciones, la primera donde se realiza una traslación 
 **Resultados visuales:**
 
 - **Python**:
-El siguiente GIF muestra la implementación del brozo robótico
+El siguiente GIF muestra la implementación del brozo robótico.
+
 ![GIF de la animación del brazo robótico de "Aplicacion_Robotica_Python.gif"](media/Aplicacion_Robotica_Python.gif)
-Muestra de todolo el notebook de python
+
+Muestra de todo el notebook de python.
+
 ![GIF de toda la implementación de python en "Implementacion_Python.gif"](media/Implementacion_Python.gif)
+
 - **Unity**:
 Este GIF muestra como estos objetos se encuentran efectivamente organizados en una jerarquía padre-hijo. Al mover al objeto padre se mueven también los hijos, pero al mover al hijo no se mueve el objeto padre.
+
 ![GIF de jeraquía de objetos en "Sistema_padre_hijo_visualizacion_sistemas_coordenadas_unity.gif"](media/Sistema_padre_hijo_visualizacion_sistemas_coordenadas_unity.gif)
+
 Escena y consola con la visualización de las propiedades matemáticas de las matrices.
+
 ![Imagen de visualizacion de escena y consola en "media/No_Comutatividad_unity.png"](media/No_Comutatividad_unity.png)
-Salida de consolaa más a detalle:
+
+Salida de consola más a detalle:
+
 ![Visualización de consola en "Tranformacion_Inversa_Unity.png"](media/Tranformacion_Inversa_Unity.png)
+
 Muestra de ejecución del codigo de la no conmutatividad e inversa de la matriz.
+
 ![GIF de ejecución de script sobre propiedades de matrices en "Transformaciones_programaticas_Unity.gif"](media/Transformaciones_programaticas_Unity.gif)
+
 Muestra cinemática de funcionamiento del script del brazo, en el que si al moificar los valores de rotación local de la articulación 1, la articulación 2 se mueve en relación a esta otra.
+
 ![GIF de visualización del funcionamiento del script del braxo robótico en "Brazo_movimiento_Unity.gif"](media/Brazo_movimiento_Unity.gif)
+
 - **Three.js**:
 Disposición normal sin rotación del cubo hijo.
+
 ![GIF de la visualización del espacio virtual en Composicion_trasnformaciones_y_threematrix4_threejs.gif](media/Composicion_trasnformaciones_y_threematrix4_threejs.gif)
+
 Cambio entre situaciones demostrando la no conmutatividad de las transformaciones.
+
 ![GIF de demostración de la no conmutatividad de las transformaciones en Visualizacion_completa_threejs.gif](media/Visualizacion_completa_threejs.gif)
 
 **Código relevante:**
